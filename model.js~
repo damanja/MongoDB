@@ -1,0 +1,7 @@
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/films', {useNewUrlParser: true});
+
+var Films = mongoose.model('Films', {text: String, date: Date,creator:String } );
+
+module.exports = Liste;

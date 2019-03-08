@@ -1,0 +1,29 @@
+var Liste = require('./model');
+
+var route=function(app){
+	app.get('/', function(req, res) {
+		res.sendFile('./public/index.html');
+	});
+
+	app.get('/api/laliste', function(req,res) {
+		Liste.find(function(err, laliste) {
+			if(err)
+				res.send(err);
+			res.json(laliste);
+		});
+	});
+
+	app.post('/api/laliste', function(req,res) {
+		Liste.find({
+			text : req.body.text;
+		},function(err,laliste){
+		if(err)
+			res.send(err);
+		res.json(laliste);
+			});
+		});
+	});
+	
+}
+
+module.exports = route;
