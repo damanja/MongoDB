@@ -1,0 +1,5 @@
+#elimine les fichiers se terminant par 'o' ou 'a'
+*.[oa]
+
+#elimine les fichiers se terminant par ~
+*~
