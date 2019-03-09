@@ -26,5 +26,4 @@ var route=function(app){
 		});
 	
 }
-
 module.exports = route;

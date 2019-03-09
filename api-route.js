@@ -17,7 +17,7 @@ var route=function(app){
 //		var titre = req.body.text;
 
 		Films.find({
-			"title" : new RegExp(req.body.text,i)
+			"title" : new RegExp(req.body.text,"i")
 		},null,{limit:10000},function(err,lesfilms){ //on va limiter nos recherches à 10.000 résultats max
  		if(err)
 			res.send(err);
