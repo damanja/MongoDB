@@ -1,28 +1,29 @@
-var Liste = require('./model');
+var Films = require('./model');
 
 var route=function(app){
 	app.get('/', function(req, res) {
 		res.sendFile('./public/index.html');
 	});
 
-	app.get('/api/laliste', function(req,res) {
-		Liste.find(function(err, laliste) {
+/*	app.get('/api/lesfilms', function(req,res) {
+		Films.find({},	function(err, lesfilms) {
 			if(err)
 				res.send(err);
-			res.json(laliste);
+			res.json(lesfilms);
 		});
-	});
+	});*/
 
-	app.post('/api/laliste', function(req,res) {
-		Liste.find({
-			text : req.body.text;
-		},function(err,laliste){
-		if(err)
+	app.post('/api/lesfilms', function(req,res) {
+//		var titre = req.body.text;
+
+		Films.find({
+			"title" : new RegExp(req.body.text,i)
+		},null,{limit:10000},function(err,lesfilms){ //on va limiter nos recherches à 10.000 résultats max
+ 		if(err)
 			res.send(err);
-		res.json(laliste);
+		res.json(lesfilms);
 			});
 		});
-	});
 	
 }
 
