@@ -10,11 +10,11 @@
         <link rel="shortcut icon" href="" />
     </head>
     <body ng-controller="mainController">
-        <h1>La Liste des choses à faire</h1>
-         <br/> Nombre de choses : {{lesfilms.length}}
+        <h1>Nos films</h1>
+         <br/> Résultats trouvés : {{lesfilms.length}}
         <div id="todo-form">
             <form class="form-inline">
-                <input type="text" placeholder="écrire quelque chose" ng-model="formData.text" class="form-control mb-2 mr-sm-2">
+                <input type="text" placeholder="Chercher un film" ng-model="formData.text" class="form-control mb-2 mr-sm-2">
                 </br>
                 <button type="submit" ng-click="chercher()" class="btn btn-dark">Chercher</button>
             </form>
