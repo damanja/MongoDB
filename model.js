@@ -8,7 +8,11 @@ const schemaRatings = new Schema({
 	tconst:String, averageRating: Number
 });
 
-schemaTitle.virtual('titre',{
+const schemaBasics = new Schema({
+	tconst:String, startYear: Number,titleType:String
+});
+
+schemaTitle.virtual('rate',{
 	ref: 'title.ratings', // The model to use
 	localField: 'titleId', // Find people where `localField`
 	foreignField: 'tconst', // is equal to `foreignField`
@@ -18,10 +22,20 @@ schemaTitle.virtual('titre',{
 	//options: {} // Query options, see http://bit.ly/mongoose-query-options
 });
 
+schemaTitle.virtual('info',{
+	ref: 'title.basics',
+	localField: 'titleId', // Find people where `localField`
+	foreignField: 'tconst', // is equal to `foreignField`
+	justOne: true
+});
+
+
 mongoose.connect('mongodb://localhost:27017/films', {useNewUrlParser: true});
 
 //var Ratings = mongoose
 var Ratings = mongoose.model('title.ratings', schemaRatings);
+var Basics = mongoose.model('title.basics', schemaBasics);
 var Films = mongoose.model('title.akas', schemaTitle);
+
 
 module.exports = Films;

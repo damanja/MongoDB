@@ -25,6 +25,9 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Titre</th>
+              <th scope="col">Durée</th>
+              <th scope="col">Année de sortie</th>
+              <th scope="col">Genre</th>
               <th scope="col">Région</th>
               <th scope="col">Ratings</th>
             </tr>
@@ -33,8 +36,11 @@
             <tr ng-repeat="x in lesfilms">
               <th scope="row">{{$index+1}}</th>
               <td>{{x.title}}</td>
+              <td>{{x.info.runtimeMinutes}}</td>
+              <td>{{x.info.startYear}}</td>
+              <td>{{x.info.genres}}</td>
               <td>{{x.region}}</td>
-              <td><strong>{{x.titre.averageRating}}</strong> ({{x.titre.numVotes}} avis)</td>
+              <td><strong>{{x.rate.averageRating}}</strong></td>
             </tr>
             <tr>
           </tbody>
