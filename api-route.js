@@ -7,7 +7,7 @@ var route=function(app){
 
 	app.get('/api/lesfilms', function(req,res) {
 		Films.find({},null,{limit:1000})
-		.populate([{path:'rate', select:'averageRating'}, {path:'info', select:'startYear genres runtimeMinutes'}])
+		.populate([{path:'rate', select:'averageRating'}, {path:'reg', select:''}])
 		.exec(function(err, lesfilms) {
 			if(err)
 				res.send(err);
@@ -19,9 +19,9 @@ var route=function(app){
 //		var titre = req.body.text;
 
 		Films.find({
-			title : new RegExp(req.body.text,"i")
+			primaryTitle : new RegExp(req.body.text,"i")
 		},null,{limit:1000})
-		.populate([{path:'rate', select:'averageRating'}, {path:'info', select:'startYear genres runtimeMinutes'}])
+		.populate([{path:'rate', select:'averageRating'}, {path:'reg', select:''}])
 		.exec(function(err, lesfilms){ //on va limiter nos recherches à 10.000 résultats max
  		if(err)
 			res.send(err);

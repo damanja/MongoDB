@@ -15,11 +15,11 @@
         <div id="todo-form">
             <form class="form-inline">
                 <input type="text" placeholder="Chercher un film" ng-model="formData.text" class="form-control mb-2 mr-sm-2">
-                </br>
+                </br>              
                 <button type="submit" ng-click="chercher()" class="btn btn-dark">Chercher</button>
             </form>
         </div>
-
+        </br></br></br>
         <table class="table table-bordered">
           <thead class="thead-dark">
             <tr>
@@ -35,11 +35,11 @@
           <tbody>
             <tr ng-repeat="x in lesfilms">
               <th scope="row">{{$index+1}}</th>
-              <td>{{x.title}}</td>
-              <td>{{x.info.runtimeMinutes}}</td>
-              <td>{{x.info.startYear}}</td>
-              <td>{{x.info.genres}}</td>
-              <td>{{x.region}}</td>
+              <td>{{x.primaryTitle}}</td>
+              <td>{{x.runtimeMinutes}}</td>
+              <td>{{x.startYear}}</td>
+              <td>{{x.genres}}</td>
+              <td>{{x.reg.region}}</td>
               <td><strong>{{x.rate.averageRating}}</strong></td>
             </tr>
             <tr>
