@@ -2,7 +2,11 @@ var Films = require('./model');
 
 var route=function(app){
 	app.get('/', function(req, res) {
-		res.sendFile('./public/index.html');
+		Films.find({},null, {limit:100})
+		.populate('rate reg')
+		.then(function(lesfilms){
+			res.render('index.html',{films: lesfilms})
+		})
 	});
 
 	app.get('/api/lesfilms', function(req,res) {

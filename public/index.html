@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
     {% block content %}
 
+
         <table class="table table-bordered">
           <thead class="thead-dark">
             <tr>
@@ -14,7 +15,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="x in lesfilms">
+              
+            <tr>
+              {% for x in films %}
               <th scope="row">{{$index+1}}</th>
               <td><a href="/api/lesfilms/{{x._id}}">{{x.primaryTitle}}</a></td>
               <td>{{x.runtimeMinutes}}</td>
@@ -23,7 +26,8 @@
               <td><div ng-repeat="a in x.reg">{{a.region}}</div></td>
               <td><strong>{{x.rate.averageRating}}</strong></td>
             </tr>
-            <tr>
+                {% endfor %}
+
           </tbody>
         </table>
     
