@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="ListeaFaire">
+<html ng-app="NosFilms">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,11 +35,11 @@
           <tbody>
             <tr ng-repeat="x in lesfilms">
               <th scope="row">{{$index+1}}</th>
-              <td>{{x.primaryTitle}}</td>
+              <td><a href='#'>{{x.primaryTitle}}</a></td>
               <td>{{x.runtimeMinutes}}</td>
               <td>{{x.startYear}}</td>
               <td>{{x.genres}}</td>
-              <td>{{x.reg.region}}</td>
+              <td><div ng-repeat="a in x.reg">{{a.region}}</div></td>
               <td><strong>{{x.rate.averageRating}}</strong></td>
             </tr>
             <tr>

@@ -6,7 +6,7 @@ var route=function(app){
 	});
 
 	app.get('/api/lesfilms', function(req,res) {
-		Films.find({},null,{limit:1000})
+		Films.find({},null,{limit:100})
 		.populate([{path:'rate', select:'averageRating'}, {path:'reg', select:''}])
 		.exec(function(err, lesfilms) {
 			if(err)
@@ -28,6 +28,14 @@ var route=function(app){
 		res.json(lesfilms);
 			});
 		});
-	
+/*
+	app.post('/api/lesfilms/:id',function(req,res){
+		Films.findById(req.params.id)
+		.exec(function(err, lefilm){
+			if(err)
+				res.sent(err);
+			res.sendFile('./public/info.html');
+		});
+	});*/
 }
 module.exports = route;
